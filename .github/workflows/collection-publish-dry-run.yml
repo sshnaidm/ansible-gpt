@@ -4,12 +4,18 @@ on:
     paths:
       - '.github/workflows/collection-publish.yml'
       - '.github/workflows/collection-publish-dry-run.yml'
+      - 'contrib/build.py'
+      - 'contrib/publish-requirements.txt'
+      - 'contrib/publish.sh'
     branches:
       - master
   pull_request:
     paths:
       - '.github/workflows/collection-publish.yml'
       - '.github/workflows/collection-publish-dry-run.yml'
+      - 'contrib/build.py'
+      - 'contrib/publish-requirements.txt'
+      - 'contrib/publish.sh'
   schedule:
     - cron: 3 0 * * *  # Run daily at 0:03 UTC
 
