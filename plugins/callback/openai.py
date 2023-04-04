@@ -8,7 +8,7 @@ __metaclass__ = type
 
 DOCUMENTATION = '''
     name: openai
-    type: stdout
+    type: notification
     short_description: Analyzes Ansible tasks and playbooks with OpenAI GPT
     description:
       - Analyzes Ansible tasks and playbooks with OpenAI GPT
