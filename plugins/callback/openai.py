@@ -74,7 +74,7 @@ def get_openai_description(
     openai.api_key = openapi_key
     if not openapi_key:
         return to_text("Please set OPENAI_API_KEY environment variable for GPT plugin to work. "
-                "Either in the environment OPENAI_API_KEY or in the config file.")
+                       "Either in the environment OPENAI_API_KEY or in the config file.")
     kwargs = {'model': model}
     if temperature_ai:
         kwargs['temperature'] = float(temperature_ai)
