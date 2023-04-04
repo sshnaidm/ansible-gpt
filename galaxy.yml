@@ -1,0 +1,33 @@
+namespace: sshnaidm
+name: openai
+version: 1.0.0
+readme: README.md
+authors:
+  - Sagi Shnaidman <sshnaidm@gmail.com>
+description: OpenAI plugins for Ansible
+license:
+  - GPL-3.0-or-later
+tags:
+  - gpt
+  - chatgpt
+  - ai
+  - openai
+  - callback
+dependencies: {}
+repository: https://github.com/sshnaidm/ansible-gpt
+documentation: https://github.com/sshnaidm/ansible-gpt
+homepage: https://github.com/sshnaidm/ansible-gpt
+issues: https://github.com/sshnaidm/ansible-gpt/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc
+# build_ignore:
+#   - ci
+#   - tests/output
+#   - build_artifact
+#   - "*.tar.gz"
+#   - ".gitignore"
+#   - ".history"
+#   - ".vscode"
+#   - ".idea"
+#   - ".github"
+#   - contrib
+#   - galaxy.yml.in
+#   - importer_result.json
