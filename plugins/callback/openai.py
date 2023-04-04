@@ -35,6 +35,7 @@ DOCUMENTATION = '''
             key: openai_model
       temperature_ai:
         description: Temperature for OpenAI GPT
+          - 'https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature'
         env:
           - name: OPENAI_TEMPERATURE
         ini:
@@ -42,6 +43,7 @@ DOCUMENTATION = '''
             key: openai_temperature
       tokens_ai:
         description: Number of tokens for OpenAI GPT
+          - 'https://platform.openai.com/docs/api-reference/completions/create#completions/create-max_tokens'
         env:
           - name: OPENAI_TOKENS
         ini:
