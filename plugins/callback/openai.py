@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# Copyright (c) 2023 Sagi Shnaidman <sshnaidm@gmail.com>
+# GNU General Public License v3.0+ (see LICENSES/GPL-3.0-or-later.txt or https://www.gnu.org/licenses/gpl-3.0.txt)
+
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
@@ -48,7 +52,11 @@ DOCUMENTATION = '''
 
 import json  # noqa: E402
 import yaml  # noqa: E402
-import openai  # noqa: E402
+try:
+    import openai  # noqa: E402
+    HAS_OPENAI = True
+except ImportError:
+    HAS_OPENAI = False
 
 from ansible.plugins.callback import CallbackBase  # noqa: E402
 from ansible.module_utils._text import to_text  # noqa: E402
@@ -61,9 +69,11 @@ def get_openai_description(
         tokens_ai=None,
         openapi_key=None,
         model=None):
+    if not HAS_OPENAI:
+        return to_text("Please install openai python library to use this plugin")
     openai.api_key = openapi_key
     if not openapi_key:
-        return ("Please set OPENAI_API_KEY environment variable for GPT plugin to work. "
+        return to_text("Please set OPENAI_API_KEY environment variable for GPT plugin to work. "
                 "Either in the environment OPENAI_API_KEY or in the config file.")
     kwargs = {'model': model}
     if temperature_ai:
@@ -95,7 +105,7 @@ def get_openai_description(
     try:
         response = openai.ChatCompletion.create(**kwargs)
     except Exception as e:
-        return f"Error: {e}"
+        return to_text(f"Error: {e}")
     if response.choices:
         if 'text' in response.choices[0]:
             answer = response.choices[0].text.strip()
