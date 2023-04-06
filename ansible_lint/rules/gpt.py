@@ -81,7 +81,6 @@ class OpenAISuggestion(AnsibleLintRule):
             {"role": "assistant", "content": ""},
             {"role": "user", "content": prompt},
         ]
-        print("content length: ", len(content))
         if len(content) > 4000:
             chunks = split_yaml(content)
         else:
