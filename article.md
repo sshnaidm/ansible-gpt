@@ -53,6 +53,8 @@ ANSIBLE_CALLBACKS_ENABLED=sshnaidm.openai.openai ansible-playbook -vv playbook.y
 
 If you have multiple plugins to enable, separate them with a comma, like so: `ANSIBLE_CALLBACKS_ENABLED=profile_tasks,sshnaidm.openai.openai ansible-playbook -vv playbook.yml -i localhost,`
 
+If you don't want to apply your playbook functionality, you can always run it in a "dry mode" by adding " - check" to the command line. That was task shouldn't change actually anything, but just imitate their actions.
+
 Please pay attention: AI recommendations do NOT always make sense. You can adjust the temperature to get more or less conservative suggestions, but it's still up to humans to understand and evaluate the suggestions as acceptable or ridiculous. Don't worry, the AI won't take your job unless you blindly accept everything it tells you. Only then you might not be needed anymore :D
 
 The callback plugin is developed in Github repository https://github.com/sshnaidm/ansible-gpt and your feedback is very welcome. Please feel free to submit any issues or patches.
