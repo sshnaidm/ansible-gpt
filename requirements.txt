@@ -1,3 +1,4 @@
 ansible-core
 openai
 PyYAML
+ansible-lint
