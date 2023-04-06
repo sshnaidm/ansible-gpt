@@ -4,8 +4,7 @@ OpenAI (GPT) additions for Ansible
 
 ## Callback plugin that analyzes the running playbook and tasks
 
-More in [Article](https://github.com/sshnaidm/ansible-gpt/blob/master/article.md)
-Usage:
+Usage (more in [article](https://github.com/sshnaidm/ansible-gpt/blob/master/article.md)):
 
 ```bash
 pip install ansible-core openai
