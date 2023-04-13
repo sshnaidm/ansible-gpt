@@ -36,6 +36,7 @@ DOCUMENTATION = '''
       temperature_ai:
         description: Temperature for OpenAI GPT
           - 'https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature'
+        default: 0.4
         env:
           - name: OPENAI_TEMPERATURE
         ini:
