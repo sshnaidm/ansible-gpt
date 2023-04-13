@@ -83,21 +83,27 @@ def get_openai_description(
     if tokens_ai:
         kwargs['max_tokens'] = int(tokens_ai)
     if task_text:
-        prompt = ("Explain what this Ansible task does, "
-                  "don't print the task itself, only explanation:"
+        prompt = ("I want you to act as a code reviewer for Ansible, and provide feedback on potential"
+                  "improvements to the code. As a reviewer, I expect you to analyze the code for best practices,"
+                  "identify any potential issues or inefficiencies,"
+                  "and suggest improvements to optimize performance and readability. Here is my code:"
                   f"\n```\n{task_text}```\n"
-                  "If you have any significant improvements for this task, "
+                  "Explain briefly what current Ansible code does, don't print the code itself."
+                  "If you have any significant improvements for this code, "
                   "please suggest them as well, print them after word 'Suggestions:'"
-                  "If you don't have any suggestions, print 'No suggestions'.")
+                  "If you don't have any suggestions, print 'No suggestions' only.")
     elif play_text:
-        prompt = ("Explain what this Ansible playbook does, "
-                  "focus on the whole purpose of the playbook, rather than on the tasks."
-                  "Don't print the playbook itself, only explanation:"
+        prompt = ("I want you to act as a code reviewer for Ansible, and provide feedback on potential"
+                  "improvements to the code. As a reviewer, I expect you to analyze the code for best practices,"
+                  "identify any potential issues or inefficiencies,"
+                  "and suggest improvements to optimize performance and readability. "
+                  "Focus on the whole purpose of the playbook and what it does, rather than on each one of tasks."
+                  "Here is my code:"
                   f"\n```\n{play_text}```\n"
-                  "If you have any significant improvements for this task, "
+                  "Explain briefly what current Ansible playbook does, don't print the code itself."
+                  "If you have any significant improvements for this code, "
                   "please suggest them as well, print them after word 'Suggestions:'"
-                  "If you don't have any suggestions, print 'No suggestions'.")
-
+                  "If you don't have any suggestions, print 'No suggestions' only.")
     kwargs['messages'] = [
         {"role": "system",
                  "content": "You are a helpful assistant and Ansible expert. :)"},

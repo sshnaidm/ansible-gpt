@@ -22,7 +22,7 @@ TEMPERATURE = os.environ.get("OPENAI_TEMPERATURE")
 TOKENS = os.environ.get("OPENAI_TOKENS")
 
 
-def split_yaml(yaml_str, max_chunk_size=4000):
+def split_yaml(yaml_str, max_chunk_size=3800):
     chunks = []
     current_chunk = ""
 
@@ -63,33 +63,37 @@ class OpenAISuggestion(AnsibleLintRule):
         content = file._content
         content = clean_yaml(content)
         prompt = (
-            "Explain briefly what current Ansible code does, "
-            "don't print the code itself, only explanation:"
+            "I want you to act as a code reviewer for Ansible, and provide feedback on potential"
+            "improvements to the code. As a reviewer, I expect you to analyze the code for best practices,"
+            "identify any potential issues or inefficiencies,"
+            "and suggest improvements to optimize performance and readability. Here is my code:"
             f"\n```\n{content}```\n"
+            "Explain briefly what current Ansible code does, don't print the code itself."
             "If you have any significant improvements for this code, "
             "please suggest them as well, print them after word 'Suggestions:'"
             "If you don't have any suggestions, print 'No suggestions' only."
-            "If it's difficult to suggest something without context, don't do it,"
-            "just print 'No suggestions'."
         )
         if TEMPERATURE:
             self._kwargs["temperature"] = float(TEMPERATURE)
         if TOKENS:
             self._kwargs["max_tokens"] = int(TOKENS)
         self._kwargs["messages"] = [
-            {"role": "system", "content": "You are a helpful assistant and Ansible expert. :)"},
+            {"role": "system", "content": "You are a helpful assistant and code reviewer for Ansible. :)"},
             {"role": "assistant", "content": ""},
             {"role": "user", "content": prompt},
         ]
-        if len(content) > 4000:
+        if len(content) > 3800:
             chunks = split_yaml(content)
         else:
             chunks = [content]
         for chunk in chunks:
             self._kwargs["messages"][2]["content"] = (
-                "Explain briefly what current Ansible code does, "
-                "don't print the code itself, only explanation:"
+                "I want you to act as a code reviewer for Ansible, and provide feedback on potential"
+                "improvements to the code. As a reviewer, I expect you to analyze the code for best practices,"
+                "identify any potential issues or inefficiencies,"
+                "and suggest improvements to optimize performance and readability. Here is my code:"
                 f"\n```\n{chunk}```\n"
+                "Explain briefly what current Ansible code does, don't print the code itself."
                 "If you have any significant improvements for this code, "
                 "please suggest them as well, print them after word 'Suggestions:'"
                 "If you don't have any suggestions, print 'No suggestions' only."
