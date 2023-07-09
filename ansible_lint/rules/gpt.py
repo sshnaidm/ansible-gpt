@@ -17,7 +17,7 @@ if not os.getenv("OPENAI_API_KEY"):
     )
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
-MODEL = os.environ.get("OPENAI_MODEL", "gpt-3.5-turbo")
+MODEL = os.environ.get("OPENAI_MODEL", "gpt-4")
 TEMPERATURE = os.environ.get("OPENAI_TEMPERATURE", "0.4")
 TOKENS = os.environ.get("OPENAI_TOKENS")
 

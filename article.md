@@ -21,7 +21,7 @@ The only required parameter for running the OpenAI callback plugin is the OpenAI
 
 The remaining parameters are optional and can be configured according to your needs:
 
-* openai_model - by default `gpt-3.5-turbo` is used (could be set with environment variable `OPENAI_MODEL`)
+* openai_model - by default `gpt-4` is used (could be set with environment variable `OPENAI_MODEL`, for example `gpt-3.5-turbo`)
 * temperature_ai - AI temperature, you can read more about it in [OpenAI docs](https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature) (could be set with environment variable `OPENAI_TEMPERATURE`), by default it's set in OpenAI.
 * tokens_ai - AI max tokens, you can read more about it in [OpenAI docs](https://platform.openai.com/docs/api-reference/completions/create#completions/create-max_tokens) (could be set with environment variable `OPENAI_TOKENS`), by default it's set in OpenAI.
 

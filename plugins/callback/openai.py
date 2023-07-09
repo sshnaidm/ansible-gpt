@@ -27,7 +27,7 @@ DOCUMENTATION = '''
             key: openai_api_key
       openai_model:
         description: OpenAI model
-        default: gpt-3.5-turbo
+        default: gpt-4
         env:
           - name: OPENAI_MODEL
         ini:
