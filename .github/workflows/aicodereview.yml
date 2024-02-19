@@ -1,0 +1,17 @@
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: OpenAI Code review Github Action
+        uses: sshnaidm/gpt-code-review-action@v2.0
+        with:
+          openai-key: ${{ secrets.OPENAI_API_KEY }}
+          max-length: 4000
+          model: 'gpt-4'
+          prompt: 'You are helpful assistant is here to review the code change below and provide feedback.'
